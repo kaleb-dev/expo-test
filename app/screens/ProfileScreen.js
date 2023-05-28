@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 const ProfileScreen = () => {
   return (
-<View className='flex-1 justify-center items-center bg-slate-950'>
+<View className='flex-1 items-center justify-center bg-black' >
       <Text className='text-red-500'>PROFILE!!!!</Text>
     </View>
   );

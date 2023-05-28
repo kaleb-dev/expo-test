@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { Text, View } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
@@ -52,11 +52,18 @@ const App = () => {
   };
 
   const [appIsReady, setAppIsReady] = useState(false);
+  const opacity = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
+    const fadeIn = Animated.timing(opacity, {
+      toValue: 1,
+      duration: 500,
+      easing: Easing.inOut(Easing.ease),
+    });
+  
     async function prepare() {
       try {
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
       } catch (e) {
         console.warn(e);
       } finally {
@@ -66,7 +73,7 @@ const App = () => {
         // });
       }
     }
-
+  
     prepare();
   }, []);
 
@@ -77,6 +84,7 @@ const App = () => {
   return (
     <PaperProvider theme={theme}>
       <NavigationContainer theme={theme}>
+      {/* <Animated.View style={{ flex: 1, opacity }}> */}
         {!loggedIn ? (
           <Stack.Navigator
             initialRouteName="Login"
@@ -101,6 +109,7 @@ const App = () => {
             <Tab.Screen name="Profile" component={ProfileScreen} />
           </Tab.Navigator>
         )}
+        {/* </Animated.View> */}
       </NavigationContainer>
     </PaperProvider>
   );
