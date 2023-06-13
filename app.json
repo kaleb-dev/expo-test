@@ -2,6 +2,7 @@
   "expo": {
     "name": "expo-test",
     "slug": "expo-test",
+    // "plugins": ["@react-native-google-signin/google-signin"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
@@ -26,5 +27,6 @@
     "web": {
       "favicon": "./app/assets/favicon.png"
     }
+
   }
 }
